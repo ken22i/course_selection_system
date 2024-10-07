@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>逢甲佈告欄系統</title>
+	{% load static %}
+	<link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css" />
+
+<!-- 在<head>标签中添加以下代码： -->
+	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v11.0&appId=168094956237826&autoLogAppEvents=1" nonce="b468a62979d101275d467c0472853622"></script>
+
+	<!-- 在新闻文章页面中添加以下代码： -->
+
+
+</head>
+<body>
+	<div id="warp">
+		<div id="header">
+			 <div class="logo">
+				<img src="{% static "images/feng.png" %}" width="180" height="40" alt="news" />
+			</div>
+		</div>
+		<div class="headings">
+			<h2>逢甲佈告欄系統</h2>
+		</div>  
+		{% block content %}{% endblock %}
+		<div id="footer">&copy; 2023逢甲佈告欄</div>
+	</div>
+</body>
+</html>

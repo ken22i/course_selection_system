@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>顯示所有佈告欄內容</title>
+{% endblock %}
+
+{% block content %}
+<div class="contentbox">
+    <h1>佈告欄列表</h1>
+    
+    <table>
+		<th>分類</th><th>標題</th><th>發表時間</th><th>點閱</th><th>修改</th><th>刪除</th>
+        {% for item in items %}
+            <tr>
+				<td><div class="typeblock">{{item.catego}}</div></td>
+                <td><a href='/detail/?id={{item.id}}'>{{item.title}}</a></td>                
+                <td>{{item.pubtime}}</td>
+                <td>{{item.press}}</td>
+                <td><a href='/edit/?id={{item.id}}'>編輯</a></td>
+                <td><a href='/del/?id={{item.id}}'>刪除</a></td>
+			</tr>
+		{% empty %}		
+		<div class="status warning">
+			<img src='{% static "images/icon_warning.png" %}'>
+			<span>目前佈告欄資料庫中沒有任何資料！</span>
+
+		</div>	
+        {% endfor %}
+	</table>
+	<div class="topfunction">
+		{% if currentpagenum >= 2 %}
+			<a href='/page1/?pagebtn=-1'><img src='{% static "images/prevpage.png" %}' alt='上一頁'></a>
+		{% endif %}		
+		{% if currentpagenum < totalpagenum %}
+			<a href='/page1/?pagebtn=1'><img src='{% static "images/nextpage.png"%}' alt='下一頁'></a>
+		{% endif %}
+	</div>
+	<p style="color: magenta">{{message01}}</p>
+</div>	
+{% endblock %}

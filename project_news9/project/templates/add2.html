@@ -1,0 +1,54 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+
+{% block login %}
+    <div align='right'>
+        <a href="/add2/" title="新增佈告欄內容">
+        <img src='{% static "images/append.png" %}' alt="新增佈告欄內容"/></a>
+		<a href="/logout2/" title="登出管理介面">
+		<img src='{% static "images/LockOff.png" %}' alt="登入管理介面"/></a>
+	</div>
+{% endblock %}
+
+{% block content %}
+<div class="contentbox">
+    <h1>新增一般內容</h1>    
+    <form name='myform' action="" method="POST">
+    {% csrf_token %}
+    <table width='100%' border='1' cellsapcing='0' cellpadding='0' >
+        <tr>
+                <td>分類</td><td>
+                        <select name="catego">
+                            {% for catego in categos %}
+                                <option>{{catego}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+        </tr>
+        <tr>
+            <td>標題</td><td><input type="text" name='title' value="{{title}}" size="60"></td>
+        </tr>        
+        <tr>
+            <td>訊息</td><td><textarea type="text" name='message' value="{{message}}" cols="60" rows="10" ></textarea></td>
+        </tr>
+        <tr>
+            <td>發表者</td><td><input type="text" name='nickname' value="{{nickname}}"></td>
+        </tr>
+        <tr>
+            <td>審核</td><td>
+                    已通過<input type='radio' name=enabled checked='checked' value="yes" id='enable_yes'>
+                    審核中<input type='radio' name=enabled id='enable_no' value="no">
+                </td>
+        </tr>
+
+    </table>
+    <p></p>
+    <input type="submit" name='bnt1' value="確認新增">
+    <input type="button" name='bnt2' value="返回首頁" onclick="window.location='/page_admin2/'">
+    <p></p>
+    <p style="color: magenta">{{message01}}</p>
+
+</form>
+</div>
+{% endblock %}

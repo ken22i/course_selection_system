@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>修改資料</title>
+{% endblock %}
+
+{% block content %}
+    <h1>修改佈告欄內容</h1>    
+    <form name='myform' action="" method="POST">
+        {% csrf_token %}
+        <table border='1' cellsapcing='0' cellpadding='0' >
+                <tr>
+                    <td>編號</td><td><input type="text" name='id' readonly value="{{id}}"></td>
+                </tr>
+                <tr>
+                    <td>標題</td><td><input type="text" name='title' value="{{title}}"></td>
+                </tr>
+                <tr>
+                    <td>分類</td><td><input type="text" name='catego' value="{{catego}}"></td>
+                </tr>
+                <tr>
+                    <td>訊息</td><td><input type="text" name='message' value="{{message}}"></td>
+                </tr>
+                <tr>
+                    <td>發表者</td><td><input type="text" name='nickname' value="{{nickname}}"></td>
+                </tr>
+                <tr>
+                    <td>點閱</td><td><input type="text" name='press' value="{{press}}"></td>
+                </tr>
+
+        </table>
+        <p></p>
+        <input type="submit" name='bnt1' value="確認修改">
+        <p></p>
+        <p style="color: magenta">{{message01}}</p>
+
+    </form>
+{% endblock %}

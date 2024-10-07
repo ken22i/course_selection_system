@@ -1,0 +1,79 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+
+{% block login %}
+    <div align='right'>
+		<a href="/login2/" title="登入管理介面">
+		<img src='{% static "images/Lock.png" %}' alt="登入管理介面"/></a>
+	</div>
+{% endblock %}
+
+{% block content %}
+
+<div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+	<!-- Indicators/dots -->
+	<div class="carousel-indicators">
+	  <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+	  <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+	  <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+	</div>
+	
+	<!-- The slideshow/carousel -->
+	<div class="carousel-inner">
+	  <div class="carousel-item active">
+		<img src="https://www.iecs.fcu.edu.tw/media/img/news/banner/112_GQVXIve.jpg.1336x470_q85_box-0%2C149%2C2975%2C1195_crop_detail.jpg" alt="Los Angeles" class="d-block" style="width:80%">
+	  </div>
+	  <div class="carousel-item">
+		<img src="https://www.iecs.fcu.edu.tw/media/img/news/banner/109%E9%A0%90%E7%A0%94%E7%94%9F%E6%B5%B7%E5%A0%B1_%E5%B0%8F%E5%9C%96.jpg.1336x470_q85_box-0%2C0%2C1000%2C352_crop_detail.jpg" alt="Chicago" class="d-block" style="width:80%">
+	  </div>
+	  <div class="carousel-item">
+		<img src="https://www.iecs.fcu.edu.tw/media/img/index/banner/3401C302-9E1A-4EDD-AF92-AD491301429A.jpeg.1336x470_q85_box-0%2C30%2C2900%2C1050_crop_detail.jpg" alt="New York" class="d-block" style="width:80%">
+	  </div>
+	</div>
+	
+	<!-- Left and right controls/icons -->
+	<button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+	  <span class="carousel-control-prev-icon"></span>
+	</button>
+	<button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+	  <span class="carousel-control-next-icon"></span>
+	</button>
+  </div>
+<div class="contentbox">
+    <h1>佈告欄列表</h1>
+	<form method="get" action="/page2/">
+        <input type="text" name="keyword" placeholder="搜尋標題">
+        <button type="submit">搜尋</button>
+    </form>
+    {% csrf_token %}
+    <table width='100%'>
+		<th>分類</th><th>標題</th><th>發表時間</th><th>點閱</th>
+        {% for item in items %}
+            <tr>
+				<td><div class="typeblock">{{item.catego}}</div></td>
+                <td><a href='/detail2/?id={{item.id}}'>{{item.title}}</a></td>                
+                <td>{{item.pubtime}}</td>
+                <td>{{item.press}}</td>
+			</tr>
+		{% empty %}		
+		<div class="status warning">
+			<img src='{% static "images/icon_warning.png" %}'>
+			<span>目前佈告欄資料庫中沒有任何資料！</span>
+
+		</div>	
+        {% endfor %}
+	</table>
+	<div class="topfunction">
+		{% if currentpagenum >= 2 %}
+			<a href='/page2/?pagebtn=-1'><img src='{% static "images/prevpage.png" %}' alt='上一頁'></a>
+		{% endif %}		
+		{% if currentpagenum < totalpagenum %}
+			<a href='/page2/?pagebtn=1'><img src='{% static "images/nextpage.png"%}' alt='下一頁'></a>
+		{% endif %}
+	</div>
+	<p style="color: magenta">{{message01}}</p>
+</div>	
+
+{% endblock %}

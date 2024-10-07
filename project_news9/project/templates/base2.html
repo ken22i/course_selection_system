@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		.carousel-inner img {
+			display: block;
+			margin: 0 auto;
+		  }
+		
+
+	</style>
+	<meta charset='utf-8'>
+	<title>逢甲佈告欄系統</title>
+	{% load static %}
+	<link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css" />
+	
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmIaUksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div id="warp">
+		<div id="header">            
+			 <div class="logo">
+				<img src="{% static "images/feng.png" %}" width="180" height="40" alt="news" />
+            </div>
+            {% block login %}{% endblock %}
+		</div>
+		<div class="headings">
+			<h2>逢甲佈告欄系統</h2>
+		</div>  
+		<ul class="nav nav-tabs" id="myTab" role="tablist">
+			<li class="nav-item">
+			  <a class="nav-link active" id="recent-tab" data-bs-toggle="tab" href="#recent" role="tab" aria-controls="recent" aria-selected="true">近期訊息</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" id="teachers-tab" data-bs-toggle="tab" href="#teachers" role="tab" aria-controls="teachers" aria-selected="false">專任教師</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" id="links-tab" data-bs-toggle="tab" href="#links" role="tab" aria-controls="links" aria-selected="false">常用連接</a>
+			</li>
+		  </ul>
+		  <div class="tab-content" id="myTabContent">
+			<!-- 近期訊息 -->
+			<div class="container tab-pane active" id="recent" role="tabpanel" aria-labelledby="recent-tab">
+				{% block content %}{% endblock %}
+			</div>
+			<!-- 專任教師 -->
+			<div class="container tab-pane fade" id="teachers" role="tabpanel" aria-labelledby="teachers-tab">
+			  <div class="container">
+				<div class="card-deck">
+				  <div class="card">
+					<img src="https://www.iecs.fcu.edu.tw/media/img/teacher/avatar/pic_0043.jpg" class="card-img-top" alt="...">
+					<div class="card-body">
+					  <h5 class="card-title">竇其仁</h5>
+					  <p class="card-text">特聘教授
+						分機：#3739
+						信箱：crdow@fcu.edu.tw
+						研究專長： 行動計算 車載網路 智慧聯網 雲端計算 學習科技</p>
+						<a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mymodal1">See Profile</a>  
+					</div>
+				  </div>
+				  <div class="card">
+					<img src="https://www.iecs.fcu.edu.tw/media/img/teacher/avatar/pic_01312.jpg" class="card-img-top" alt="...">
+					<div class="card-body">
+					  <h5 class="card-title">王益文</h5>
+					  <p class="card-text">副教授
+						分機：#3763
+						信箱：ywang@fcu.edu.tw
+						研究專長： 嵌入式系統設計 VLSI系統設計 類神經網路</p>
+						<a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mymodal2">See Profile</a>  
+					</div>
+				  </div>
+				  <div class="modal" id="mymodal2">
+					<div class="modal-dialog">
+					  <div class="modal-content">
+				  
+						<!-- Modal Header -->
+						<div class="modal-header">
+						  <h4 class="modal-title">王益文 副教授</h4>
+						  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+						</div>
+				  
+						<!-- Modal body -->
+						<div class="modal-body">
+						  校內經歷<br>
+						  資訊工程學系(所) 副教授<br>
+						  資訊工程學系(所) 系主任<br>
+						</div>
+				  
+						<!-- Modal footer -->
+						<div class="modal-footer">
+						  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+						</div> 
+					  </div>
+					</div>
+				  </div>     
+				  <div class="card">
+					<img src="https://www.iecs.fcu.edu.tw/media/img/teacher/avatar/IMG_2906.png" class="card-img-top" alt="...">
+					<div class="card-body">
+					  <h5 class="card-title">薛念林</h5>
+					  <p class="card-text">教授
+						分機：#3773
+						信箱：nlhsueh@fcu.edu.tw
+						研究專長： 軟體工程 軟體品質驗證 物件設計</p>
+						<a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mymodal3">See Profile</a>  
+					</div>
+				  </div>
+				  <div class="modal" id="mymodal3">
+					<div class="modal-dialog">
+					  <div class="modal-content">
+				  
+						<!-- Modal Header -->
+						<div class="modal-header">
+						  <h4 class="modal-title">薛念林 教授</h4>
+						  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+						</div>
+				  
+						<!-- Modal body -->
+						<div class="modal-body">
+						  校內經歷<br>
+						  系統發展組 組長<br>
+						  資訊工程學系 副教授<br>
+						  資訊工程學系 教授<br>
+						  資訊工程學系 系主任<br>
+						  資訊技術服務中心 副研究員<br>
+						  資訊處 研究員<br>
+						  資訊電機學院不分系榮譽班 主任<br>
+						</div>
+				  
+						<!-- Modal footer -->
+						<div class="modal-footer">
+						  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+						</div>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+			<!-- 常用連接 -->
+			<div class="container tab-pane fade" id="links" role="tabpanel" aria-labelledby="links-tab">
+			  <div class="container">
+				<ul>
+				  <li><a href="https://www.iecs.fcu.edu.tw/about/">關於本系</a></li>
+				  <li><a href="https://www.iecs.fcu.edu.tw/about/course_plan/">課程介紹</a></li>
+				  <li><a href="https://www.iecs.fcu.edu.tw/news/">訊息與公告</a></li>
+				</ul>
+			  </div>
+			</div>
+		  </div>
+		  
+		  
+		  <!-- The Modal -->
+		  <div class="modal" id="mymodal1">
+			<div class="modal-dialog">
+			  <div class="modal-content">
+		  
+				<!-- Modal Header -->
+				<div class="modal-header">
+				  <h4 class="modal-title">竇其仁 特聘教授</h4>
+				  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				</div>
+		  
+				<!-- Modal body -->
+				<div class="modal-body">
+				  校內經歷<br>
+				  智慧聯網研究中心 主任<br>
+				  產學合作與技術營運辦公室(籌備) 執行長<br>
+				  研究推動組 組長<br>
+				  研究發展處 研發長<br>
+				  系統與網路組 組長<br>
+				  資訊工程學系 教授<br>
+				  資訊工程學系 特聘教授<br>
+				  資訊工程學系 系主任<br>
+				  資訊工程學系(所) 副教授<br>
+				  資訊電機學院 秘書<br>
+				  資訊電機學院 院長<br>
+				</div>
+		  
+				<!-- Modal footer -->
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+				</div>
+		
+		<div id="footer">&copy; 2023逢甲佈告欄</div>
+	</div>
+</body>
+</html>

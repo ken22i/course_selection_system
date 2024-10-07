@@ -1,0 +1,108 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block login %}
+    <div align='right'>
+        <a href="/add2/" title="新增佈告欄內容">
+        <img src='{% static "images/append.png" %}' alt="新增佈告欄內容"/></a>
+        <a href="/logout2/" title="登出管理介面">
+        <img src='{% static "images/LockOff.png" %}' alt="登入管理介面"/></a>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="contentbox">
+    <h1>佈告欄列表</h1>
+    <form method="get" action="/page_admin2/">
+        <input type="text" name="keyword" placeholder="搜尋標題">
+        <button type="submit">搜尋</button>
+    </form>
+
+    {% csrf_token %}
+    <table width='100%'>
+        <tr>
+            {% if currentpagenum == 1 %}
+                <th>分類</th><th>標題</th><th>發表時間</th><th>點閱</th><th>修改</th><th>刪除</th>
+            {% endif %}
+        </tr>
+        {% for item in items %}
+            <tr>
+                {% if currentpagenum == 1 %}
+                    <td><div class="typeblock">{{item.catego}}</div></td>
+                    <td><a href='/detail2/?id={{item.id}}'>{{item.title}}</a></td>
+                    <td>{{item.pubtime}}</td>
+                {% else %}
+                    <td></td>
+                    <td><a href='/detail2/?id={{item.id}}'>{{item.title}}</a></td>
+                    <td></td>
+                {% endif %}
+                <td>{{item.press}}</td>
+                <td><a href='/edit2/{{item.id}}/'>編輯<img src='{% static "images/note_edit.png" %}'></a></td>
+                <td><a href='/del2/{{item.id}}/'>刪除<img src='{% static "images/cross.png" %}'></a></td>
+            </tr>
+        {% empty %}
+        <div class="status warning">
+            <img src='{% static "images/icon_warning.png" %}'>
+            <span>目前佈告欄資料庫中沒有任何資料！</span>
+        </div>
+        {% endfor %}
+    </table>
+
+    <div id="scroll-loader" style="display: none; text-align: center;">
+        <img src="{% static 'images/loader.gif' %}" alt="Loading...">
+    </div>
+    <p style="color: magenta">{{message01}}</p>
+</div>
+
+<script>
+    var isLoading = false;
+    var currentPage = {{ currentpagenum }};
+    var totalPages = {{ totalpagenum }};
+    var keyword = "{{ keyword }}";
+
+    function loadNextPage() {
+        if (!isLoading && currentPage < totalPages) {
+            isLoading = true;
+            var loader = document.getElementById("scroll-loader");
+            loader.style.display = "block";
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "/page_admin2/?pagenum3=" + (currentPage + 1) + "&keyword=" + keyword, true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = xhr.responseText;
+                    var parser = new DOMParser();
+                    var doc = parser.parseFromString(response, "text/html");
+                    var itemsContainer = doc.querySelector("table");
+                    var items = itemsContainer.querySelectorAll("tr");
+
+                    var table = document.querySelector("table");
+                    items.forEach(function(item) {
+                        table.appendChild(item);
+                    });
+
+                    currentPage++;
+                    isLoading = false;
+                    loader.style.display = "none";
+                }
+            };
+            xhr.send();
+        }
+    }
+
+    window.addEventListener("scroll", function() {
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        var windowHeight = window.innerHeight;
+        var documentHeight = document.documentElement.offsetHeight;
+
+        if (scrollTop + windowHeight >= documentHeight - 100) {
+            loadNextPage();
+        }
+    });
+
+    // Initial load
+    loadNextPage();
+</script>
+
+{% endblock %}
+

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>顯示所有佈告欄內容</title>
+{% endblock %}
+
+{% block content %}
+    <h1>佈告欄列表</h1>
+    {% csrf_token %}
+    <table border='1' cellsapcing='0' cellpadding='0' >
+        <th>標題</th><th>分類</th><th>訊息</th><th>發表者</th><th>點閱</th><th>修改</th><th>刪除</th>
+        {% for item in items %}
+            <tr>
+                <td>{{item.title}}</td>
+                <td>{{item.catego}}</td>
+                <td>{{item.message}}</td>
+                <td>{{item.nickname}}</td>
+                <td>{{item.press}}</td>
+                <td><a href='/edit/?id={{item.id}}'>編輯</a></td>
+                <td><a href='/del/?id={{item.id}}'>刪除</a></td>
+            </tr>
+        {% endfor %}
+
+    </table>
+    <p style="color: magenta">{{message01}}</p>
+{% endblock %}

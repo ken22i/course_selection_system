@@ -1,0 +1,252 @@
+html, body {height: 100%;} /*設置html和body元素的高度為100%使其填滿整個瀏覽器窗口。*/
+
+body {height: 100%; font-family: Arial, Helvetica, sans-serif; font-size: 13px; margin: 0; padding: 0; background:#eaeaea}
+/*設置body元素的字體、字體大小、外邊距、內邊距和背景顏色。*/
+p {
+	padding: 0;
+	font-size: 11pt;
+	line-height: 150%;
+}
+/*設置段落元素p的外邊距、字體大小和行高。*/
+
+ul, li {list-style: none; padding: 0; margin: 0;}/*設置無序列表ul和列表項li的樣式，去除默認的列表樣式和外邊距。*/
+img {border: none;}/*設置圖像元素img的邊框樣式，去除默認的邊框。*/
+h1, h2, h3, h4, h5 {padding: 0; margin: 0;}/*設置標題元素h1、h2、h3、h4、h5的外邊距和內邊距。*/
+
+
+table {border-collapse: collapse;}/*設置表格元素table的邊框合併為單一邊框。*/
+th,td {padding: 8px;}
+tr.alt td {background : url(images/dot.gif) repeat-x bottom;} /*設置奇數行的背景顏色為重複的點狀圖像。*/
+tr.alt:hover td {background:#E1E1E1 url(images/dot.gif) repeat-x bottom; cursor: pointer;} 
+th {
+	background: #E0E0E0 url(images/bg_th.png) repeat-x top;
+	text-shadow: 1px 1px 1px #fff;
+	font-size: 15px;
+}/*設置表頭單元格th的背景顏色為灰色，並使用指定的背景圖像進行重複。*/
+
+
+table tr td a {
+	text-decoration: none;
+	font-weight: bold;
+	color: #06F;
+}
+table tr td a:hover { color:#F60;}	
+/*設置表格中鏈接a的樣式，包括去除下劃線、加粗字體和藍色字體顏色。*/
+
+#warp {
+	height: 100%;
+	margin-top: 20px;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+	width: 720px;
+} 
+/*設置id為"warp"的元素的高度為100%，並定義了其他樣式屬性，如上邊距、右邊距、下邊距和左邊距等。*/
+		
+#header {
+	width: 100%;
+	height: 50px;
+}
+/*設置id為"header"的元素的寬度和高度等樣式屬性。*/
+
+#footer {
+	font-size: 12px;
+	padding: 15px 10px;
+	clear: both;
+	background: url(images/bg_footer.png);
+	margin-bottom: 20px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	-moz-border-radius-bottomright: 10px;
+	-moz-border-radius-bottomleft: 10px;
+	text-shadow: 1px 1px 1px #CCC;
+	text-align: center;
+}
+/*設置id為"footer"的元素的字體大小、內邊距、清除浮動、背景圖像和邊框半徑等樣式屬性。*/
+
+.topfunction {
+	height: 30px;
+	margin-top: 12px;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+/*設置名為"topfunction"的元素的高度、上邊距、右邊距、左邊距和文本對齊方式等樣式屬性。*/
+
+.topfunction img {
+	margin-right: 10px;
+}				
+			
+.toplogin {
+	height: 30px;
+	float: right;
+	margin-top: 12px;
+	margin-right: 5px;
+	text-align: right;
+}
+
+.toplogin img {
+	margin-right: 10px;
+}				
+
+.logo {
+	float: left;
+	padding: 0px 0 0 20px;
+}
+/*設置名為"logo"的元素的浮動方式和內邊距等樣式屬性。*/
+
+.headings {
+	padding: 0 20px;
+	border: 1px solid #CACACA;
+	text-shadow: 1px 1px 1px #333;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	-moz-border-radius-topright: 10px;
+	-moz-border-radius-topleft: 10px;
+	height: 35px;
+	background-color: #EAEAEA;
+	background-image: url(images/bg_heading_alt.png);
+	background-repeat: repeat-x;
+	background-position: top;
+	color: #EEE;
+}
+/*邊框、文本陰影、背景顏色和邊框半徑等樣式屬性。*/
+
+.headings h2 {
+	padding-top: 8px;
+	font-size: 16px;
+}
+
+.contentbox {
+	overflow: auto;
+	border: 1px solid #fff;
+	padding: 15px;
+	background: #fff url(images/bg_fade_med.png) repeat-x top;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	-moz-border-radius-bottomright: 10px;
+	-moz-border-radius-bottomleft: 10px;
+}
+
+.typeblock {
+	color: #FFF;
+	background-color: #F36;
+	padding: 2px 5px;
+	text-align: center;
+	text-shadow: 1px 1px #333;
+	border-radius: 5px;
+}
+
+.extrabottom {
+	padding: 15px;
+	background: url(images/bg_fade_sml.png) repeat-x top;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	margin-top: 10px;
+}
+		
+.status {
+	padding: 8px 10px 5px 10px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	text-shadow: 1px 1px 1px #fff;
+	overflow: auto;
+	clear: both;
+	width: 90%;
+	margin: 5px auto 10px auto;
+}
+.status img {float: left; padding-right: 5px;}
+.status p {padding: 0; margin: 0;}
+.status p span {font-weight: 700;}
+
+.warning {
+	border: 3px solid #BF9900; 
+	background: #FEEB9C url(images/bg_fade_yellow_med.png) repeat-x top;
+}
+.warning span {color: #BF9900;}
+
+.newsinfo {
+	color: #333;
+	background-color: #EEE;
+	padding: 5px 10px;
+	margin: 0px 10px;
+	display: block;
+	text-align: center;
+}
+
+.newsinfo *{
+	vertical-align: text-bottom;
+}
+
+.boxLogin {
+	width: 205px;
+	margin: auto;
+	margin-top: 100px;
+	padding: 0px;
+	background-image: url(images/Feng_Chia.png);
+	background-position: center;
+	background-size: cover;
+}
+
+
+
+
+
+
+
+
+.boxLogin  div.fields {
+	width: 360px;
+	height: 185px;
+	overflow: hidden;
+	background-color: #FFF;
+	border-radius: 10px;
+	box-shadow: 2px 2px 2px 2px #999;
+	margin-left: 290px;
+	padding-top: 20px;
+	padding-right: 0;
+	padding-bottom: 0;
+	padding-left: 50px;
+}
+
+.boxLogin  .toolTip{
+	width:416px;
+	float:right;
+}
+
+.boxLogin  .fields p.error {
+	background:transparent;
+}
+
+.fields p.rem {
+	padding:10px 0 0 100px;
+}
+
+.fields p label { display:inline-block;}
+
+.action {
+	padding:20px 74px 0 0;
+	text-align:right;
+}
+
+.small {
+	width: 84px;
+	font-size: 13px;
+	text-shadow: 1px 1px 0px #CCC;
+}
+
+.sep { margin-top:15px; }
+.carousel-inner img {
+    display: block;
+    margin: 0 auto;
+  }
+
+.card {
+  width: 400px; /* 設定card的寬度 */
+  margin-right: 20px; /* 設定card之間的間距 */
+}
+
+.card-deck{
+  display: flex; /* 使用flexbox排列card */
+  flex-wrap: wrap; /* 設定card換行 */
+}
